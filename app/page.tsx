@@ -1,4 +1,9 @@
 import Footer from "@/components/footer";
+import GridItem from "@/components/grid-item";
+import Equipments from "@/components/grid-items/equipments";
+import Mentor from "@/components/grid-items/mentor";
+import Project from "@/components/grid-items/project";
+import Social from "@/components/grid-items/social";
 import { siteConfig } from "@/config/site-config";
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
@@ -45,27 +50,24 @@ export default function Home() {
           <Footer />
         </div>
         {/* Right Panel */}
-        <div className="grid w-full grid-cols-4 gap-10 py-10 overflow-y-auto auto-rows-[60px]">
-          <div className="col-span-2 row-span-2 bg-yellow-200 ">1</div>
-          <div className="col-span-1 row-span-2 bg-pink-200 ">2</div>
-          <div className="col-span-1 row-span-2 bg-yellow-200 ">3</div>
-          <div className="col-span-2 row-span-4 bg-pink-200">4</div>
-          <div className="col-span-2 row-span-2 bg-yellow-200 ">5</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">6</div>
-          <div className="col-span-2 row-span-1 bg-yellow-200">7</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">8</div>
-          <div className="col-span-2 row-span-2 bg-yellow-200 ">10</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">9</div>
-          <div className="col-span-2 row-span-2 bg-yellow-200 ">1</div>
-          <div className="col-span-1 row-span-2 bg-pink-200 ">2</div>
-          <div className="col-span-1 row-span-2 bg-yellow-200 ">3</div>
-          <div className="col-span-2 row-span-4 bg-pink-200">4</div>
-          <div className="col-span-2 row-span-2 bg-yellow-200 ">5</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">6</div>
-          <div className="col-span-2 row-span-1 bg-yellow-200">7</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">8</div>
-          {/* <div className="col-span-2 row-span-2 bg-yellow-200 ">10</div>
-          <div className="col-span-2 row-span-1 bg-pink-200">9</div> */}
+        <div className="grid w-full grid-cols-4 gap-10 py-10 px-1 overflow-y-auto auto-rows-[76px]">
+          {siteConfig.items.map((item, index) => {
+            return (
+              <GridItem key={index} size={item.layout}>
+                {item.type === "social" ? (
+                  <Social item={item} />
+                ) : item.type === "mentor" ? (
+                  <Mentor item={item} />
+                ) : item.type === "project" ? (
+                  <Project item={item} />
+                ) : item.type === "equipment" ? (
+                  <Equipments item={item} />
+                ) : (
+                  <div>Need to create new component type.</div>
+                )}
+              </GridItem>
+            );
+          })}
         </div>
       </div>
     </main>
