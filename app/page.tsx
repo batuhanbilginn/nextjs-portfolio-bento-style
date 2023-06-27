@@ -11,9 +11,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex flex-col items-center flex-1 w-full h-full">
-      <div className="container flex w-full h-full gap-10 px-6">
+      <div className="container flex flex-col w-full h-full px-6 gap:6 xl:gap-10 xl:flex-row">
         {/* Left Panel */}
-        <div className="flex flex-col justify-between h-full max-w-sm py-10">
+        <div className="flex flex-col justify-between py-6 xl:max-w-sm xl:py-10 xl:h-full">
           {/* Top Container */}
           <div>
             <Image alt="avatar" src="/pp-new3.png" width={120} height={120} />
@@ -28,7 +28,7 @@ export default function Home() {
               </p>
             </div>
             {/* Buttons Container */}
-            <div className="mt-6 space-y-4">
+            <div className="flex items-center gap-3 mt-6">
               <a
                 href={`${siteConfig.locationLink}`}
                 className="flex items-center w-full gap-2 px-4 py-2 text-sm font-medium border rounded-md border-neutral-100 dark:border-neutral-800"
@@ -47,10 +47,12 @@ export default function Home() {
             </div>
           </div>
           {/* Footer */}
-          <Footer />
+          <div className="hidden xl:flex">
+            <Footer />
+          </div>
         </div>
         {/* Right Panel */}
-        <div className="grid w-full grid-cols-4 gap-10 py-10 px-1 overflow-y-auto auto-rows-[76px]">
+        <div className="grid w-full grid-cols-4 xl:gap-10 gap-6 xl:py-10 py-6 px-1 xl:overflow-y-auto auto-rows-[76px]">
           {siteConfig.items.map((item, index) => {
             return (
               <GridItem key={index} size={item.layout}>
@@ -68,6 +70,10 @@ export default function Home() {
               </GridItem>
             );
           })}
+        </div>
+        {/* Footer for Mobile */}
+        <div className="flex pb-6 xl:hidden">
+          <Footer />
         </div>
       </div>
     </main>

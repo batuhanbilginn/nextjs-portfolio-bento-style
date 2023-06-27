@@ -5,7 +5,7 @@ const Mentor = ({ item }: { item: GridItemInterface }) => {
   return (
     <div className="flex items-center justify-between gap-4">
       {item.icon && <Icon type={item.icon} color={item.color} />}
-      <div className="w-full text-lg font-semibold">{item.title}</div>
+      <div className="w-full @lg:text-lg font-semibold">{item.title}</div>
       {/* Price & Promo Container */}
       <div className="">
         {/* Top Container */}
@@ -20,7 +20,9 @@ const Mentor = ({ item }: { item: GridItemInterface }) => {
           </div>
         </div>
         {/* Bottom Container */}
-        <div className="font-bold text-primary">{item.promotion}</div>
+        <div className="font-bold text-primary @lg:text-base text-sm">
+          {item.promotion}
+        </div>
       </div>
     </div>
   );
