@@ -12,7 +12,7 @@ export default function Home() {
         <RightPanel />
         {/* Footer for Mobile */}
         <div className="flex pb-6 xl:hidden">
-          <Footer key="mobile-footer" />
+          <Footer />
         </div>
       </div>
     </main>

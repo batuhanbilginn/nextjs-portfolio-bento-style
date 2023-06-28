@@ -1,3 +1,4 @@
+"use client";
 import { siteConfig } from "@/config/site-config";
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
@@ -12,7 +13,16 @@ const LeftPanel = () => {
       {/* Top Container */}
       <div>
         <div>
-          <Image alt="avatar" src="/pp-new3.png" width={120} height={120} />
+          <Image
+            priority
+            loading="eager"
+            alt="avatar"
+            placeholder="blur"
+            src="/pp-new3.png"
+            width={120}
+            height={120}
+            blurDataURL="/pp-new3.png"
+          />
         </div>
 
         {/* Text Container */}
@@ -44,7 +54,7 @@ const LeftPanel = () => {
         </div>
         {/* Footer */}
         <div className="hidden mt-6 xl:flex">
-          <Footer key="desktop-footer" />
+          <Footer />
         </div>
       </div>
     </div>
